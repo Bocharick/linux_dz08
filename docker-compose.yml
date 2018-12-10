@@ -1,0 +1,22 @@
+###############################################
+# Use root/123456 as user/password credentials
+###############################################
+version: '3.1'
+
+services:
+
+  db:
+    image: mariadb
+    container_name: docker_mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    volumes:
+      - ./databases:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    container_name: docker_adminer
+    restart: always
+    ports:
+      - 8080:8080
